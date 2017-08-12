@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.raksa.materaildesigndemo.R;
+import com.raksa.materaildesigndemo.app.MainActivity;
 import com.raksa.materaildesigndemo.app.model.Landscape;
 import com.raksa.materaildesigndemo.app.view_holder.MyViewHolder;
 
@@ -35,13 +36,43 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
-            Landscape currentObject = mdata.get(position);
+    public void onBindViewHolder(final MyViewHolder holder, int position) {
+            final Landscape currentObject = mdata.get(position);
             holder.textViewTitle.setText(currentObject.getTitle());
             holder.textViewDescription.setText(currentObject.getDescription());
             holder.imageViewLandscape.setImageResource(currentObject.getImageID());
             holder.imageViewDelete.setImageResource(R.drawable.ic_delete_black_24dp);
             holder.imageViewMakeCopy.setImageResource(R.drawable.ic_make_copy);
+
+        final int clickPostion = position;
+
+        //set Click Listener
+        holder.imageViewDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mdata.remove(clickPostion);
+                notifyItemRemoved(clickPostion);
+                notifyItemRangeChanged(clickPostion,mdata.size());
+            }
+        });
+
+        holder.imageViewMakeCopy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                    mdata.add(clickPostion,currentObject);
+                    notifyItemInserted(clickPostion+1);
+                    notifyItemRangeChanged(clickPostion+1,mdata.size());
+                }
+
+
+        });
+
+    }
+
+    @Override
+    public void onViewAttachedToWindow(MyViewHolder holder) {
+        super.onViewAttachedToWindow(holder);
     }
 
     @Override

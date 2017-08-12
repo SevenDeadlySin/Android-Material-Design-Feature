@@ -30,4 +30,5 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
         imageViewMakeCopy = (ImageView) itemView.findViewById(R.id.imageViewMakeCopy);
 
     }
+
 }
