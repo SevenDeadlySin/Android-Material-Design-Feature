@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:checkableBehavior="single"
+        android:enabled="true"
+        android:visible="true">
+        <item
+            android:id="@+id/animalMenuItem"
+            android:icon="@drawable/ic_animal"
+            android:title="Visit The Animals" />
+        <item
+            android:id="@+id/birdMenuItem"
+            android:icon="@drawable/ic_birds"
+            android:title="Visit The Birds" />
+        <item
+            android:id="@+id/forestMenuItem"
+            android:icon="@drawable/ic_forest"
+            android:title="Visit The Forests" />
+        <item
+            android:id="@+id/landscapeMenuItem"
+            android:icon="@drawable/ic_landscape"
+            android:title="Visit The Landscape" />
+        <item
+            android:id="@+id/oceanMenuItem"
+            android:icon="@drawable/ic_ocean"
+            android:title="Visit The Oceans" />
+        <item
+            android:id="@+id/planetMenuItem"
+            android:icon="@drawable/ic_planet"
+            android:title="Visit The Planets" />
+    </group>
+
+    <group>
+        <item android:id="@+id/aboutMenuItem" android:title="About Us"/>
+        <item android:id="@+id/rateUsMenuItem" android:title="Rate Us"/>
+    </group>
+
+</menu>

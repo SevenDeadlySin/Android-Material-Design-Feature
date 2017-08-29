@@ -1,15 +1,16 @@
 package com.raksa.materaildesigndemo.app;
 
 
-import android.app.Activity;
 
-import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.View;
 
@@ -18,11 +19,12 @@ import com.raksa.materaildesigndemo.app.adapter.MyRecyclerViewAdapter;
 import com.raksa.materaildesigndemo.app.model.Landscape;
 
 
-//change from AppCompat_Activity to Activity to support material Desgin theme
 public class MainActivity extends AppCompatActivity{
 
     Toolbar myToolbar;
     RecyclerView mRecyclerView;
+
+    ActionBarDrawerToggle actionBarDrawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +35,6 @@ public class MainActivity extends AppCompatActivity{
         setSupportActionBar(myToolbar);
         getSupportActionBar().setTitle("Welcome");
         myToolbar.setSubtitle("Material Design");
-        myToolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
 
 
         mRecyclerView = (RecyclerView) findViewById(R.id.myRecycleView);
@@ -45,6 +46,40 @@ public class MainActivity extends AppCompatActivity{
         mRecyclerView.setAdapter(mAdater);
 
 
+        //set up Drawer
+
+
+        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.myDrawerLayout);
+
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,myToolbar,R.string.open,R.string.close){
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+                super.onDrawerStateChanged(newState);
+            }
+        };
+
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+
+        drawerLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                actionBarDrawerToggle.syncState();
+            }
+        });
+
+
+
+
     }
 
     @Override
@@ -52,6 +87,7 @@ public class MainActivity extends AppCompatActivity{
         getMenuInflater().inflate(R.menu.main_menu,menu);
         return true;
     }
+
 
 
 }
