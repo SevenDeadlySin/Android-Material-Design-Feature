@@ -1,0 +1,21 @@
+package com.example.raksa.materialtabstablayoutdemo.tab_activity;
+
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+import com.example.raksa.materialtabstablayoutdemo.R;
+
+public class CustomActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_custom);
+
+        //set up ActionBar
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Custom Tab Demo");
+
+    }
+}
